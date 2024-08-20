@@ -3,6 +3,7 @@
 
 <div style="margin-left: 50px;">
   <h2>Demonstration of proper working ix-dropdown with button Trigger</h2>
+  <p>click on button "Open"</p>
   <ix-button id="iconTriggerId">Open</ix-button>
   <ix-dropdown trigger="iconTriggerId">
     <ix-dropdown-item icon="star" label="Item 1"></ix-dropdown-item>
@@ -10,13 +11,33 @@
     <ix-dropdown-item icon="bulb" label="Item 3"></ix-dropdown-item>
   </ix-dropdown>
 </div>
-<div style="margin-left: 50px;">
+<div style="margin-left: 50px; display: block; position: relative; height: 8rem; width: 100%">
   <h2>Demonstration of broken ix-dropdown inside ix-tree items</h2>
-  <ix-button id="iconTriggerId">Open</ix-button>
-  <ix-dropdown trigger="iconTriggerId">
-    <ix-dropdown-item icon="star" label="Item 1"></ix-dropdown-item>
-    <ix-dropdown-item icon="document" label="Item 2"></ix-dropdown-item>
-    <ix-dropdown-item icon="bulb" label="Item 3"></ix-dropdown-item>
-  </ix-dropdown>
+  <p>click on button "..." on item level</p>
+  <ix-tree root="root" [model]="model" [renderItem]="treeItem"></ix-tree>
+    <ng-template #treeItem let-item>
+      <div class="d-flex align-items-center">
+        {{ item.name }}
+        <ix-icon-button [id]="'iconTrigger' + item.id" icon="more-menu"></ix-icon-button>
+        <ix-dropdown [trigger]="'iconTrigger' + item.id">
+          <ix-dropdown-item icon="star" label="Item 1"></ix-dropdown-item>
+          <ix-dropdown-item icon="document" label="Item 2"></ix-dropdown-item>
+          <ix-dropdown-item icon="bulb" label="Item 3"></ix-dropdown-item>
+        </ix-dropdown>
+      </div>
+    </ng-template>
+    <p>also does not work with button instead icon-button</p>
+  <ix-tree root="root" [model]="model" [renderItem]="treeItem2"></ix-tree>
+    <ng-template #treeItem2 let-item>
+      <div class="d-flex align-items-center">
+        {{ item.name }}
+        <ix-button [id]="'btnTrigger' + item.id">Open</ix-button>
+        <ix-dropdown [trigger]="'btnTrigger' + item.id">
+          <ix-dropdown-item icon="star" label="Item 1"></ix-dropdown-item>
+          <ix-dropdown-item icon="document" label="Item 2"></ix-dropdown-item>
+          <ix-dropdown-item icon="bulb" label="Item 3"></ix-dropdown-item>
+        </ix-dropdown>
+      </div>
+    </ng-template>
 </div>
 
