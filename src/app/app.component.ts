@@ -4,7 +4,8 @@ import { TreeModel } from '@siemens/ix';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent {
   title = 'ix-dropdown issue';

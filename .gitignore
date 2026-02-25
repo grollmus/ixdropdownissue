@@ -45,3 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 /.vs/ixdropdownissue/FileContentIndex
+/.vs/ixdropdownissue/v17
+/.vs/ixdropdownissue.slnx/FileContentIndex
+/.vs/slnx.sqlite
